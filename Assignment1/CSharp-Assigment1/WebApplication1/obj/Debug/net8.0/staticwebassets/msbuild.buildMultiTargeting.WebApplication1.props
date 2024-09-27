@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+﻿<Project>
+  <Import Project="..\build\WebApplication1.props" />
+=======
+﻿<Project>
+  <Import Project="..\build\WebApplication1.props" />
+>>>>>>> 94994292fa6783b27d873001d5486fa6ef59253d
+</Project>
