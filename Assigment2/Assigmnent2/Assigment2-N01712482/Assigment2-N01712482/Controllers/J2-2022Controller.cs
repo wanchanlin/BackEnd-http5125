@@ -15,27 +15,40 @@ namespace Assigment2_N01712482.Controllers
         /// <param name="input"></param>
         /// <returns></returns>ll([FromQuery] string input)
 
-
-        [HttpPost(template:"Fergusonball")]
+        [HttpGet(template: "Fergusonball")]
         public string Fergusonball([FromQuery] string input)
         {
-            // Split the input string into an array of integers
-            var inputData = input.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
+            // Validate the input before parsing
+            if (string.IsNullOrEmpty(input))
+            {
+                return "Invalid input: No data provided.";
+            }
+
+            // Split the input string into an array of integers, handle potential parsing errors
+            int[] inputData;
+            try
+            {
+                inputData = input.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
                                  .Select(int.Parse)
                                  .ToArray();
+            }
+            catch (FormatException)
+            {
+                return "Invalid input: Please ensure all input values are integers.";
+            }
 
-            // The first value is the number of players
+            // The first value should be the number of players
             int numberOfPlayers = inputData[0];
 
-            // Check if the length of inputData is as expected
+            // Check if the input length is as expected
             if (inputData.Length != 1 + (2 * numberOfPlayers))
             {
                 return "Invalid input: The number of points and fouls does not match the number of players.";
             }
 
             int cnt = 0; // Counter for players above the threshold
-            string isGold = ""; // To check if all are above the threshold
-            int threshold = 40; // Define the threshold
+            bool allAboveThreshold = true; // Track if all players are above the threshold
+            const int threshold = 40; // Define the threshold (could also be a parameter)
 
             // Iterate through the points and fouls for each player
             for (int i = 0; i < numberOfPlayers; i++)
@@ -44,7 +57,7 @@ namespace Assigment2_N01712482.Controllers
                 int playerPoints = inputData[2 * i + 1];  // Points for player `i`
                 int playerFouls = inputData[2 * i + 2];   // Fouls for player `i`
 
-                // StarRating calculation based on the same C++ logic
+                // StarRating calculation
                 int starRating = (5 * playerPoints) - (3 * playerFouls);
 
                 // Check if the starRating exceeds the threshold
@@ -52,16 +65,14 @@ namespace Assigment2_N01712482.Controllers
                 {
                     cnt++; // Increment count if above threshold
                 }
+                else
+                {
+                    allAboveThreshold = false; // If any player is below the threshold
+                }
             }
 
-            // Final check: if all players meet the threshold
-            if (cnt == numberOfPlayers)
-            {
-                isGold = "+"; // All players are above the threshold
-            }
-
-            // Return the count of players above the threshold with '+' if all are above
-            return cnt.ToString() + isGold;
+            // Return the count of players above the threshold and '+' if all players exceed it
+            return cnt.ToString() + (allAboveThreshold ? "+" : "");
         }
 
 

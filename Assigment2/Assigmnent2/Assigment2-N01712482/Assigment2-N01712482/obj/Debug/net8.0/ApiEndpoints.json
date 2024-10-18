@@ -65,7 +65,7 @@
     "ContainingType": "Assigment2_N01712482.Controllers.J2_2022Controller",
     "Method": "Fergusonball",
     "RelativePath": "api/J2_2022/Fergusonball",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -117,7 +117,7 @@
     "ContainingType": "Assigment2_N01712482.Controllers.J3Controller",
     "Method": "ProcessString",
     "RelativePath": "api/J3/ProcessString",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
