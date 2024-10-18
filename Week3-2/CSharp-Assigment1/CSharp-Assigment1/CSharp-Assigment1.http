@@ -1,0 +1,6 @@
+@CSharp_Assigment1_HostAddress = http://localhost:5116
+
+GET {{CSharp_Assigment1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

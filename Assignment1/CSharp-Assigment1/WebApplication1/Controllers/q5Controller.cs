@@ -9,11 +9,12 @@ namespace WebApplication1.Controllers
     public class q5Controller : ControllerBase
     {
 
+        /// <summary>
+        /// Generates a sentence containing the specified secret number.
         /// </summary>
-        /// <param name="number"></param>
+        /// <param name="secretNumber">The secret number to include in the sentence.</param>
         /// <returns>
-        /// A sentance sentance with a the secrete number
-        /// </returns> 
+        /// A sentence containing the secret number.
         /// </returns>
 
         [HttpPost(template: "Secret")]
