@@ -7,17 +7,9 @@ namespace Assigment2_N01712482.Controllers
     [ApiController]
     public class J2Controller : ControllerBase
     {   /// <summary>
-        /// 
+        ///  /// GET:j2/ChiliPeppers
         /// </summary>
-        /// <param name="Ingredients"></param>
-        /// Header
-        /// Get/ChiliPeppers
-        /// Dictionary with pepper names and their SHU values
-        /// Check if Ingredients is null or empty
-        /// Return 0 if no ingredients were provided
-        /// Split Ingredients into an array of pepper names
-        /// <returns>
-        /// Calculate the total spiciness (SHU)
+        /// <param name="Ingredients"></param> The different chili names of ingredients 
         /// </returns>
         /// 
         [HttpGet(template: "ChiliPeppers")]

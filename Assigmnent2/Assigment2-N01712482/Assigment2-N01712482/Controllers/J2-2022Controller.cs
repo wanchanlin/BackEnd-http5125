@@ -10,7 +10,10 @@ namespace Assigment2_N01712482.Controllers
     {
 
         /// <summary>
+        /// GET:J2-2022/Fergusonball
         /// https://cemc.uwaterloo.ca/sites/default/files/documents/2022/2022CCCJrProblemSet.html
+        /// input with different number with space in 
+        /// us array put the number in to caculate all the numbers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>ll([FromQuery] string input)

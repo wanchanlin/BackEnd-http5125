@@ -7,10 +7,10 @@ namespace Assigment2_N01712482.Controllers
     [ApiController]
     public class j1Controller : ControllerBase
     {   /// <summary>
-        /// 
+        /// GET:J1/Delivedroid
         /// </summary>
-        /// <param name="Collisions"></param>
-        /// <param name="Deliveries"></param>
+        /// <param name="Collisions"></param> score for -10 per points
+        /// <param name="Deliveries"></param> score for 50 per points
         /// <returns></returns>
         [HttpPost(template: "Delivedroid")]
         [Consumes("application/x-www-form-urlencoded")]

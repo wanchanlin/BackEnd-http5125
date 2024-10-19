@@ -9,10 +9,10 @@ namespace Assigment2_N01712482.Controllers
     {
         /// <summary>
         /// https://cemc.uwaterloo.ca/sites/default/files/documents/2022/2022CCCJrProblemSet.html
-
+        /// GET:J1-2022/CupCakes
         /// </summary>
-        /// <param name="small"></param>
-        /// <param name="regular"></param>
+        /// <param name="small"></param> small box in put of 3 
+        /// <param name="regular"></param>reglar box of input of 8
         /// <returns></returns>
         [HttpPost(template: "CupCakes")]
         [Consumes("application/x-www-form-urlencoded")]

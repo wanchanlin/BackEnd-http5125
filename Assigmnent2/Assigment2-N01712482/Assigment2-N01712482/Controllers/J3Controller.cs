@@ -10,6 +10,7 @@ namespace Assigment2_N01712482.Controllers
     {
         ///<summary>
         /// https://cemc.uwaterloo.ca/sites/default/files/documents/2022/2022CCCJrProblemSet.html
+        /// GET:J3/ProcessString
         /// to  seperate the tring got  
         /// </summary>
 
