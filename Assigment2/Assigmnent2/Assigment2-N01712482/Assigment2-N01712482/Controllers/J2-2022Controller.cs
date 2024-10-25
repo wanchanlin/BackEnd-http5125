@@ -10,10 +10,29 @@ namespace Assigment2_N01712482.Controllers
     {
 
         /// <summary>
+        /// GET:J2-2022/Fergusonball
         /// https://cemc.uwaterloo.ca/sites/default/files/documents/2022/2022CCCJrProblemSet.html
+        /// Calculates the number of players whose performance exceeds a defined threshold based on their points and fouls.
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>ll([FromQuery] string input)
+        /// <remarks>
+        /// This method processes a space- or comma-separated string of integers representing the number of players, followed by pairs of points and fouls for each player.
+        /// 
+        /// The player's performance is evaluated using the following formula to calculate their star rating:
+        /// - StarRating = (5 * points) - (3 * fouls)
+        /// 
+        /// The method checks how many players have a star rating above a predefined threshold of 40.
+        /// - If all players exceed the threshold, the result includes a '+' symbol.
+        /// - If any player fails to exceed the threshold, only the count of players above the threshold is returned.
+        /// 
+        /// The input string must follow this format:
+        /// 1. The first value represents the number of players.
+        /// 2. The subsequent values alternate between points and fouls for each player.
+        /// The method validates the input to ensure it matches the expected format, returning an error message for invalid input.
+        /// </remarks>
+        /// <param name="input">A space- or comma-separated string of integers representing the number of players and their corresponding points and fouls.</param>
+        /// <returns>
+        /// A string representing the number of players whose star rating exceeds the threshold, with a '+' if all players exceed it. Returns error messages for invalid input.
+        /// </returns>
 
         [HttpGet(template: "Fergusonball")]
         public string Fergusonball([FromQuery] string input)
@@ -24,7 +43,6 @@ namespace Assigment2_N01712482.Controllers
                 return "Invalid input: No data provided.";
             }
 
-            // Split the input string into an array of integers, handle potential parsing errors
             int[] inputData;
             try
             {
@@ -37,49 +55,37 @@ namespace Assigment2_N01712482.Controllers
                 return "Invalid input: Please ensure all input values are integers.";
             }
 
-            // The first value should be the number of players
+           
             int numberOfPlayers = inputData[0];
 
-            // Check if the input length is as expected
             if (inputData.Length != 1 + (2 * numberOfPlayers))
             {
                 return "Invalid input: The number of points and fouls does not match the number of players.";
             }
 
-            int cnt = 0; // Counter for players above the threshold
-            bool allAboveThreshold = true; // Track if all players are above the threshold
-            const int threshold = 40; // Define the threshold (could also be a parameter)
+            int cnt = 0;
+            bool allAboveThreshold = true; 
+            const int threshold = 40; 
 
-            // Iterate through the points and fouls for each player
+           
             for (int i = 0; i < numberOfPlayers; i++)
             {
-                // Points and fouls are interleaved starting from index 1
-                int playerPoints = inputData[2 * i + 1];  // Points for player `i`
-                int playerFouls = inputData[2 * i + 2];   // Fouls for player `i`
+                int playerPoints = inputData[2 * i + 1];  
+                int playerFouls = inputData[2 * i + 2];  
 
-                // StarRating calculation
                 int starRating = (5 * playerPoints) - (3 * playerFouls);
 
-                // Check if the starRating exceeds the threshold
                 if (starRating > threshold)
                 {
-                    cnt++; // Increment count if above threshold
+                    cnt++;
                 }
                 else
                 {
-                    allAboveThreshold = false; // If any player is below the threshold
+                    allAboveThreshold = false; 
                 }
-            }
-
-            // Return the count of players above the threshold and '+' if all players exceed it
+        
             return cnt.ToString() + (allAboveThreshold ? "+" : "");
         }
-
-
-
-
-
-
 
     }
 }

@@ -7,11 +7,12 @@ namespace Assigment2_N01712482.Controllers
     [ApiController]
     public class j1Controller : ControllerBase
     {   /// <summary>
-        /// 
+        /// Calculates the total score based on deliveries and collisions.
+        /// GET:J1/Delivedroid
         /// </summary>
-        /// <param name="Collisions"></param>
-        /// <param name="Deliveries"></param>
-        /// <returns></returns>
+        /// <param name="Collisions">The number of collisions. Each collision deducts 10 points.</param>
+        /// <param name="Deliveries">The number of deliveries. Each delivery adds 50 points.</param>
+        /// <returns>The total score, with a bonus of 500 points if deliveries exceed collisions.</returns>
         [HttpPost(template: "Delivedroid")]
         [Consumes("application/x-www-form-urlencoded")]
         

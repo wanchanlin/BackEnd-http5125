@@ -9,14 +9,25 @@ namespace Assigment2_N01712482.Controllers
     public class J3Controller : ControllerBase
     {
         ///<summary>
-        /// https://cemc.uwaterloo.ca/sites/default/files/documents/2022/2022CCCJrProblemSet.html
-        /// to  seperate the tring got  
+        /// Processes the input string to insert specific markers and replace symbols.
+        /// GET:J3/ProcessString
         /// </summary>
+        /// <remarks>
+        /// This method processes a given string based on a few specific rules:
+        /// 1. It inserts a '*' character whenever a letter follows a number in the string.
+        /// 2. It replaces certain symbols:
+        ///     - A '+' is replaced with the word "tighten".
+        ///     - A '-' is replaced with the word "loosen".
+        ///     - A '*' is replaced with a newline character ('\n').
+        /// The method uses a `StringBuilder` to efficiently handle string modifications and returns the processed result as a string. 
+        /// This function could be useful for formatting commands or processing input where the relationship between letters and numbers, as well as specific symbols, needs to be expressed in a human-readable format.
+        /// The logic is based on the Canadian Computing Competition Junior 2022 problem set.
+        /// </remarks>
+        /// <param name="input">The input string to be processed, containing letters, numbers, and symbols.</param>
+        /// <returns>
+        /// A processed string with '*' inserted between numbers and letters, specific symbols replaced, and formatted for readability.
+        /// </returns>
 
-        /// Convert the input into a character array
-        /// Create a new StringBuilder to handle modifications
-        //// Start from index 1 to avoid out-of-bounds in i-1
-        /// <returns></returns>
         [HttpGet(template: "ProcessString")]
         public string ProcessString([FromQuery] string input)
         {
@@ -27,13 +38,12 @@ namespace Assigment2_N01712482.Controllers
             char[] inpArray = input.ToCharArray();
             StringBuilder inpBuilder = new StringBuilder(new string(inpArray));
 
-            // Insert '*' when a letter follows a number
             for (int i = 1; i < inpBuilder.Length; i++)
             {
                 if (letters.Contains(inpBuilder[i]) && numbers.Contains(inpBuilder[i - 1]))
                 {
                     inpBuilder.Insert(i, '*');
-                    i++; // Skip over the inserted '*' to avoid an infinite loop
+                    i++; 
                 }
             }
 
