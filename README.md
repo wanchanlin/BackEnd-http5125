@@ -1,4 +1,4 @@
-# http5125
+# http5125-Backend Development with ASP.NET
 This repository contains resources and assignments for the HTTP5125 Backend Development class at Number College, focused on ASP.NET. This course covers the foundational and advanced principles of backend development, including:
 
 -Building and deploying web applications with ASP.NET
